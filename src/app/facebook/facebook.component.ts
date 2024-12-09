@@ -25,7 +25,7 @@ export class FacebookComponent {
       this.user = user;
       console.log('User: ', user);
       // Send token to backend
-      this.http.post('http://localhost:5000/auth/facebook/token', { access_token: user.authToken }).subscribe({
+      this.http.post('https://facebookloginback-end.onrender.com/auth/facebook/token', { access_token: user.authToken }).subscribe({
         next: response => console.log('Backend response:', response),
         error: err => console.error('Error from backend:', err)
       });
@@ -34,7 +34,7 @@ export class FacebookComponent {
 
 
   getUserSession(): void {
-    this.http.get('http://localhost:5000/auth/user', { withCredentials: true }).subscribe({
+    this.http.get('https://facebookloginback-end.onrender.com/auth/user', { withCredentials: true }).subscribe({
       next: (response: any) => {
         console.log('User session:', response);
         this.user = response; // Save the user session data
