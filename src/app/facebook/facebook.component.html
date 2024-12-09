@@ -1,1 +1,6 @@
-<p>facebook works!</p>
+<div>
+    <button (click)="signInWithFacebook()">Login with Facebook</button>
+    <div *ngIf="user">
+      <p>Welcome, {{ user.name }}</p>
+    </div>
+  </div>
