@@ -1,6 +1,24 @@
 <div>
-    <button (click)="signInWithFacebook()">Login with Facebook</button>
+    <button *ngIf="!user"  (click)="signInWithFacebook()">Login with Facebook</button>
     <div *ngIf="user">
       <p>Welcome, {{ user.name }}</p>
+      <p>Email: {{ user.email }}</p>
+      <img [src]="user.photoUrl" alt="User profile picture">
     </div>
   </div>
+
+  <div>
+    <button  *ngIf="user" (click)="signOut()">log out</button>
+  </div>
+  <div class="user-session">
+    <h1>User Session</h1>
+    <div *ngIf="user; else noSession">
+      <p><strong>User ID:</strong> {{ user.id }}</p>
+      <p><strong>Name:</strong> {{ user.name }}</p>
+      <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+    <ng-template #noSession>
+      <p>No active user session found.</p>
+    </ng-template>
+  </div>
+  
